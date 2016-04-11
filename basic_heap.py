@@ -9,19 +9,13 @@ class Heap(object):
 
     def insert(self, item):
 
-        if( self.isFull() ):
-            print("Heap is full...")
-            return
-
         self.currentPosition = self.currentPosition + 1
         self.heap[self.currentPosition] = item
         self.fixUp(self.currentPosition)
 
     def fixUp(self, index):
 
-
         parentIndex = int((index-1)/2)
-
 
         while( parentIndex >=0 and self.heap[parentIndex] < self.heap[index]):
             temp = self.heap[index]
@@ -31,6 +25,7 @@ class Heap(object):
             parentIndex = (int)((index-1)/2)
 
     def getMax(self):
+
         result = self.heap[0]
         self.currentPosition = self.currentPosition - 1
         self.heap[0]=self.heap[self.currentPosition]
@@ -39,6 +34,7 @@ class Heap(object):
         return result
 
     def fixDown(self, index, upto):
+
         if( upto < 0 ):
             upto = self.currentPosition
 
@@ -72,6 +68,7 @@ class Heap(object):
 
 
     def heapsort(self):
+
         for i in range(0,self.currentPosition+1):
             temp = self.heap[0]
             print("%d " % temp)
@@ -80,6 +77,7 @@ class Heap(object):
             self.fixDown(0, self.currentPosition-i-1)
 
     def isFull(self):
+
         if( self.currentPosition == Heap.HEAP_SIZE ):
             return True
         else:
